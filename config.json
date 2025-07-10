@@ -1,0 +1,19 @@
+{
+    "mcp": {
+        "servers": {
+            "sequential-thinking": {
+                "type": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-sequential-thinking"
+                ]
+            },
+            "everything-server-streamable-http": {
+                "type": "http",
+                "url": "http://localhost:3001/mcp"
+            }
+        }
+    },
+    "model": "qwen3"
+}
