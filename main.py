@@ -55,10 +55,10 @@ def setup_mcp_tool_specs(config: Mcp | None) -> Dict[str, McpToolSpec]:
 async def handle_user_input(agent: FunctionAgent, agent_ctx: Context, user_input: str, verbose: bool = False) -> str:
     handler = agent.run(user_input, context=agent_ctx)
     async for event in handler.stream_events():
-        if verbose and type(event) == ToolCall:
+        if verbose and isinstance(event, ToolCall):
             print(
                 f"Calling tool {event.tool_name} with kwargs {event.tool_kwargs}")
-        elif verbose and type(event) == ToolCallResult:
+        elif verbose and isinstance(event, ToolCallResult):
             print(f"Tool {event.tool_name} returned {event.tool_output}")
 
     response = await handler
